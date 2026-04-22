@@ -94,6 +94,8 @@ enum {
 };
 
 extern const int CHAR_TO_PIECE[];
+extern const char* PIECE_TO_CHAR;
+extern const char* SQ_TO_COORD;
 
 enum {
     WHITE,

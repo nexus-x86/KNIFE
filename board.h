@@ -36,6 +36,7 @@
 #define PieceBB(pc, c) (board->pieces[Piece(pc, (c))])
 #define LSB(bb)                (__builtin_ctzll(bb))
 #define MSB(bb)                (63 ^ __builtin_clzll(bb))
+#define OccBB(c)       (board->occupancies[c])
 
 void ClearBoard(Board *board);
 void ParseFen(char *fen, Board *board);
