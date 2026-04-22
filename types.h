@@ -26,6 +26,14 @@ enum {
     NO_PIECE,
 },
 
+extern const int CHAR_TO_PIECE[];
+
+enum {
+    WHITE,
+    BLACK,
+    BOTH
+};
+
 typedef uint64_t Bitboard;
 typedef uint32_t Move;
 
@@ -58,7 +66,6 @@ typedef struct {
     int xstm;
     int histPly;
     int moveNo;
-    int phase;
     uint64_t piecesCounts;
     int squares[64];
     Bitboard occupancies[3];
