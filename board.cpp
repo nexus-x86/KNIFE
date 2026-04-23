@@ -225,8 +225,18 @@ int IsFiftyMoveRule(Board *board);
 
 void MakeNullMove(Board *board);
 void UndoNullMove(Board *board);
-void MakeMove(Move move, Board *board);
-void MakeMoveUpdate(Move move, Board *board, int update);
+
+void MakeMove(Move move, Board *board) {
+    MakeMoveUpdate(move, board, 1);
+}
+
+void MakeMoveUpdate(Move move, Board *board, int update) {
+    int from = From(move);
+    int to = To(move);
+    int piece = Piece(move);
+
+}
+
 void UndoMove(Move move, Board *board);
 
 int IsPseudoLegal(Move move, Board *board);
