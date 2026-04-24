@@ -38,6 +38,34 @@
 #define MSB(bb)                (63 ^ __builtin_clzll(bb))
 #define OccBB(c)       (board->occupancies[c])
 
+#define NULL_MOVE 0
+
+#define QUIET_FLAG 0b0000
+#define CASTLE_FLAG 0b0001
+#define CAPTURE_FLAG 0b0100
+#define EP_FLAG 0b0110
+#define PROMO_FLAG 0b1000
+#define KNIGHT_PROMO_FLAG 0b1000
+#define BISHOP_PROMO_FLAG 0b1001
+#define ROOK_PROMO_FLAG 0b1010
+#define QUEEN_PROMO_FLAG 0b1011
+
+#define BuildMove(from, to, piece, flags) (from) | ((to << 6)) | ((piece) << 12) | ((flags) << 16)
+#define FromTo(move) (((int) (move) & 0x00fff) >> 0)
+#define From(move) (((int) (move) & 0x0003f) >> 0)
+#define To(move) (((int) (move) & 0x00fc0) >> 6)
+#define Moving(move) (((int) (move) & 0x0f000) >> 12)
+#define Flags(move) (((int) (move) & 0xf0000) >> 16)
+
+#define IsCap(move) (!!(Flags(move) & CAPTURE_FLAG))
+#define IsEP(move) (Flags(move) == EP_FLAG)
+#define IsCas(move) (Flags(move) == CASTLE_FLAG)
+
+#define IsPromo(move) (!!(Flags(move) & PROMO_FLAG))
+#define PromoPT(move) ((Flags(move) & 0x3) + KNIGHT)
+#define PromoPiece(move, stm) (Piece(PromoPT(move), stm))
+
+
 void ClearBoard(Board *board);
 void ParseFen(char *fen, Board *board);
 void BoardToFen(char *fen, Board *board);

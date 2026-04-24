@@ -235,6 +235,9 @@ void MakeMoveUpdate(Move move, Board *board, int update) {
     int to = To(move);
     int piece = Piece(move);
 
+    int captured = IsEP(move) ? Piece(PAWN, board->xstm) : board->squares[to];
+
+    // memcpy(&board->history,)
 }
 
 void UndoMove(Move move, Board *board);
