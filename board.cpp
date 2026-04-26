@@ -233,8 +233,16 @@ void MakeMove(Move move, Board *board) {
 void MakeMoveUpdate(Move move, Board *board, int update) {
     int from = From(move);
     int to = To(move);
-    int piece = Piece(move);
+    int piece = Moving(move);
+    int captured = IsEP(move) ? Piece(PAWN, board->xstm) : board->squares[to]; 
 
+    memcpy(&board->history[board->histPly], board, offsetof(Board, stm));
+    board->history[board->histPly].capture = captured;
+
+    board->fmr++;
+    board->nullply++;
+
+    FlipBits()
 }
 
 void UndoMove(Move move, Board *board);

@@ -1,9 +1,10 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#define BuildMove(from, to, piece, flags) (from) | 
 #define From(move) (((int) (move) & 0x0003f) >> 0)
 #define To(move) (((int) (move) & 0x00fc0) >> 6)
-#define Piece(move) (((int) (move) & 0x0f000) >> 12)
+#define Moving(move) (((int) (move) & 0x0f000) >> 12)
 
 enum {
     PAWN,

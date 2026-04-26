@@ -34,6 +34,7 @@
 #define PieceType(pc)  ((pc) >> 1)
 #define PPieceBB(pc)   (board->pieces[pc])
 #define PieceBB(pc, c) (board->pieces[Piece(pc, (c))])
+#define Bit(sq) (1ULL << (sq))
 #define LSB(bb)                (__builtin_ctzll(bb))
 #define MSB(bb)                (63 ^ __builtin_clzll(bb))
 #define OccBB(c)       (board->occupancies[c])
