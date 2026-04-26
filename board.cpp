@@ -243,6 +243,9 @@ void MakeMoveUpdate(Move move, Board *board, int update) {
     board->nullply++;
 
     FlipBits()
+    int captured = IsEP(move) ? Piece(PAWN, board->xstm) : board->squares[to];
+
+    // memcpy(&board->history,)
 }
 
 void UndoMove(Move move, Board *board);
