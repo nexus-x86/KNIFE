@@ -242,7 +242,15 @@ void MakeMoveUpdate(Move move, Board *board, int update) {
     board->fmr++;
     board->nullply++;
 
-    FlipBits()
+    FlipBits(board->pieces[piece], from, to);
+    FlipBits(OccBB(board->stm), from, to);
+    FlipBits(OccBB(BOTH), from, to);
+
+    board->squares[from] = NO_PIECE;
+    board->squares[to] = piece;
+
+
+
     int captured = IsEP(move) ? Piece(PAWN, board->xstm) : board->squares[to];
 
     // memcpy(&board->history,)

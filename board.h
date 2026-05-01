@@ -39,6 +39,9 @@
 #define MSB(bb)                (63 ^ __builtin_clzll(bb))
 #define OccBB(c)       (board->occupancies[c])
 
+#define FlipBit(bb, sq) ((bb) ^= Bit(sq))
+#define FlipBits(bb, sq1, sq2) ((bb) ^= Bit(sq1) ^ Bit(sq2))
+
 #define NULL_MOVE 0
 
 #define QUIET_FLAG 0b0000
