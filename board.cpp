@@ -249,7 +249,18 @@ void MakeMoveUpdate(Move move, Board *board, int update) {
     board->squares[from] = NO_PIECE;
     board->squares[to] = piece;
 
+    board->zobrist ^= ZOBRIST_PIECES[piece][from] ^ ZOBRIST_PIECES[piece][to];
+    if (PieceType(piece) == PAWN) {
+        board->pawnZobrist ^= ZOBRIST_PIECES[piece][from] ^ ZOBRIST_PIECES[piece][to];
+    }
 
+    if (IsCas(move)) {
+        int rookFrom = board->cr[CASTLING_ROOK[to]];
+        int rookTo = CASTLE_ROOK_DEST[to];
+        int rook = Piece(ROOK, board->stm);
+
+
+    } 
 
     int captured = IsEP(move) ? Piece(PAWN, board->xstm) : board->squares[to];
 
