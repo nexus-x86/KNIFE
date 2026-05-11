@@ -8,5 +8,6 @@ A chess engine with the core design philosophy being precise aggression.
 
 ## Inspirations
 - [berserk](https://github.com/jhonnold/berserk)
+- [Altair](https://github.com/Alex2262/AltairChessEngine)
 - [Stockfish](https://github.com/official-stockfish/Stockfish)
 - [chessinator](https://github.com/dogeystamp/chess_inator)
